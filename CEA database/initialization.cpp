@@ -3,10 +3,12 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 // #include <personel.cpp>
 
 using namespace std;
 
+ifstream accDatabase("accounts.txt");
 string divider = "==========================================================================================================================================";
 
 /*
@@ -71,7 +73,7 @@ public:
 void login()
 {
     string credentials = "";
-    int attempts = 0;
+    int attempts = 6;
 
     if (attempts > 0)
     {
@@ -81,7 +83,7 @@ void login()
 
         cin >> credentials;
 
-        if (1)
+        if ()
         {
 
         }
