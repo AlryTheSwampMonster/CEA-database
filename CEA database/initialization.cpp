@@ -64,6 +64,8 @@ public:
     int roleLevel;
     string facility;
     string worksOn;
+    string dateOfBirth;
+    string dateOfHiring;
     int warnsReceived;
     string workedAt;
     string workedOn;
@@ -73,7 +75,7 @@ public:
 void login()
 {
     string credentials = "";
-    int attempts = 6;
+    int attempts = 0;
 
     if (attempts > 0)
     {
@@ -83,7 +85,7 @@ void login()
 
         cin >> credentials;
 
-        if ()
+        if (1)
         {
 
         }
@@ -101,7 +103,7 @@ void login()
         cout << divider << endl << endl <<
             "Access denied." << endl << endl << "Your location has been notified to your local Department of Internal Security, and Data Preservation Department." << endl <<
             "If they do not respond, the location is marked as an High clearance facility or an emergency is taking place, the nearest Armed Mobiled Unit will also be notified." << endl <<
-            "Please do not move or leave the roo, you are in or you may be marked as hostile and may result in: A warning, decresed payment, demotion, termination, or execution." << endl << endl <<
+            "Please do not move or leave the room, you are in or you may be marked as hostile and may result in: A warning, decresed payment, demotion, termination, or execution." << endl << endl <<
             "We thank you for your cooperation." << endl << endl << divider << endl << endl;
     }
 }
@@ -116,7 +118,7 @@ int main()
 
 
 
-
+    return 0;
     /*
 
     Old code for CEA, DO NOT TOUCH
