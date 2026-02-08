@@ -1,2 +1,0 @@
-username password
-guest 123456

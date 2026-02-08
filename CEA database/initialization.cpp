@@ -8,9 +8,7 @@
 
 using namespace std;
 
-ifstream accDatabase("accounts.txt");
-string divider = "==========================================================================================================================================";
-
+string divider = "==================================================================================================================================================================================";
 /*
 enum class AuthorizationCEA
 {
@@ -72,40 +70,63 @@ public:
 
 };
 
+
+bool checkLogin(const string& inputUser, const string& inputPass)
+{
+    ifstream accDatabase("accounts.txt");
+
+    if (!accDatabase.is_open())
+    {
+        return false;
+    }
+
+    string fileUser, filePass;
+
+    while (accDatabase >> fileUser >> filePass)
+    {
+        if (fileUser == inputUser && filePass == inputPass)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void login()
 {
-    string credentials = "";
-    int attempts = 0;
-
-    if (attempts > 0)
+    int attempts = 6;
+    string insertName = "";
+    string insertPass = "";
+    
+    while (attempts > 0)
     {
         cout << divider << endl << endl <<
             "Accessing credentials required." << endl <<
             "Please insert your username and password:" << endl << endl;
 
-        cin >> credentials;
+        cin >> insertName >> insertPass;
 
-        if (1)
+        cout << endl;
+
+        if (checkLogin(insertName, insertPass))
         {
-
+            cout << divider << endl << endl << "Access granted." << endl << "Welcome " << insertName << endl << endl;
+        
+            return;
         }
-        else
-        {
-            attempts = attempts - 1;
+            
+        attempts--;
 
+        cout << divider << endl << endl << "Access denied." << endl << "Wrong username or password." << endl << endl << attempts <<" tries left before lockdown." << endl << endl;
 
-
-            login();
-        }
     }
-    else
-    {
-        cout << divider << endl << endl <<
-            "Access denied." << endl << endl << "Your location has been notified to your local Department of Internal Security, and Data Preservation Department." << endl <<
-            "If they do not respond, the location is marked as an High clearance facility or an emergency is taking place, the nearest Armed Mobiled Unit will also be notified." << endl <<
-            "Please do not move or leave the room, you are in or you may be marked as hostile and may result in: A warning, decresed payment, demotion, termination, or execution." << endl << endl <<
-            "We thank you for your cooperation." << endl << endl << divider << endl << endl;
-    }
+
+    cout << endl << divider << endl << endl <<
+        "Locking down." << endl << endl << "Your location has been notified to your local Department of Internal Security, and Data Preservation Department." << endl <<
+        "If they do not respond, the location is marked as an High clearance facility or an emergency is taking place, the nearest Armed Mobiled Unit will also be notified." << endl <<
+        "Please do not move or leave the room, you are in or you may be marked as hostile and may result in: A warning, decresed payment, demotion, termination, or execution." << endl << endl <<
+        "We thank you for your cooperation." << endl << endl << divider << endl << endl;
 }
 
 
